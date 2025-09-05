@@ -5,6 +5,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  basePath: '/affinda-illustrated-grid',
+  assetPrefix: '/affinda-illustrated-grid/',
 }
 
 module.exports = nextConfig
