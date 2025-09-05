@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Affinda Illustrated Grid</title>
+    <style>
+        @font-face {
+            font-family: 'NeuSans';
+            src: url('data:font/woff2;base64,') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+            background-color: #dde6e3;
+            min-height: 100vh;
+            line-height: 1.5;
+        }
+        
+        .main-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 64px 20px;
+            overflow-x: hidden;
+        }
+        
+        @media (min-width: 1440px) {
+            .main-container {
+                padding: 80px 20px;
+            }
+        }
+        
+        /* Desktop Layout */
+        .desktop-layout {
+            display: none;
+        }
+        
+        @media (min-width: 1139px) {
+            .desktop-layout {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0;
+            }
+            
+            .headline-card,
+            .feature-card {
+                width: 33.333%;
+                padding: 0 20px;
+            }
+        }
+        
+        /* Mobile Layout */
+        .mobile-layout {
+            display: block;
+        }
+        
+        @media (min-width: 1139px) {
+            .mobile-layout {
+                display: none;
+            }
+        }
+        
+        /* Headline Styles */
+        .headline {
+            font-size: 44px;
+            font-weight: 400;
+            color: #14343b;
+            letter-spacing: -0.88px;
+            line-height: 1;
+            margin-bottom: 40px;
+        }
+        
+        @media (max-width: 1138px) {
+            .headline {
+                font-size: 32px;
+                letter-spacing: -0.64px;
+                margin-bottom: 60px;
+                text-align: center;
+            }
+        }
+        
+        /* Card Styles */
+        .feature-card {
+            background: #fff9ee;
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 40px;
+            position: relative;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card-content {
+            flex: 1;
+        }
+        
+        .card-title {
+            font-size: 34px;
+            font-weight: 400;
+            color: #14343b;
+            letter-spacing: -0.68px;
+            line-height: 1;
+            margin-bottom: 16px;
+        }
+        
+        @media (max-width: 1138px) {
+            .card-title {
+                font-size: 24px;
+                letter-spacing: -0.48px;
+            }
+        }
+        
+        .card-description {
+            font-size: 18px;
+            line-height: 26px;
+            color: #2b484f;
+        }
+        
+        @media (max-width: 1138px) {
+            .card-description {
+                font-size: 16px;
+                line-height: 24px;
+            }
+        }
+        
+        /* Responsive Grid for medium screens */
+        @media (min-width: 640px) and (max-width: 1138px) {
+            .responsive-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+            }
+            
+            .headline-container {
+                grid-column: 1 / -1;
+                text-align: center;
+            }
+        }
+        
+        /* Mobile horizontal scroll */
+        @media (max-width: 639px) {
+            .mobile-scroll {
+                display: block;
+                padding: 0 20px;
+            }
+            
+            .cards-container {
+                display: flex;
+                gap: 20px;
+                overflow-x: auto;
+                padding-bottom: 20px;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            .mobile-card {
+                flex: 0 0 315px;
+                background: #fff9ee;
+                border-radius: 24px;
+                padding: 30px;
+                min-height: 420px;
+                scroll-snap-align: start;
+                position: relative;
+            }
+            
+            .mobile-card .card-title {
+                font-size: 25px;
+                letter-spacing: -0.5px;
+                margin-bottom: 12px;
+            }
+            
+            .mobile-card .card-description {
+                font-size: 16px;
+                line-height: 24px;
+            }
+            
+            /* Hide scrollbar */
+            .cards-container::-webkit-scrollbar {
+                display: none;
+            }
+            
+            .cards-container {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+            
+            .progress-indicator {
+                margin: 20px auto;
+                width: 80%;
+                height: 3px;
+                background: #d1ddda;
+                border-radius: 2px;
+                position: relative;
+            }
+            
+            .progress-bar {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 30%;
+                background: #8a7049;
+                border-radius: 2px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <!-- Mobile Version -->
+        <div class="mobile-layout">
+            <!-- Mobile Headline -->
+            <div class="headline-container">
+                <h1 class="headline">Let AI agents do your document processing</h1>
+            </div>
+            
+            <!-- Mobile Horizontal Scroll (small screens only) -->
+            <div class="mobile-scroll">
+                <div class="cards-container">
+                    <div class="mobile-card">
+                        <div class="card-content">
+                            <h3 class="card-title">Achieve 99%+ accuracy</h3>
+                            <p class="card-description">90% isn't enough. Affinda's model memory approach learns from every interaction, reducing mistakes and freeing your team for more valuable work.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mobile-card">
+                        <div class="card-content">
+                            <h3 class="card-title">More complete than LLMs alone</h3>
+                            <p class="card-description">LLMs alone hit limits. Affinda wraps an end-to-end platform around LLMs—adding model memory, RAG, OCR and more. Skip the bugs, get results in weeks.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mobile-card">
+                        <div class="card-content">
+                            <h3 class="card-title">Move fast and maintain control</h3>
+                            <p class="card-description">Build with Affinda or bring your own workflow. With APIs, sample code and docs, it's easy to get started and scale on your terms.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mobile-card">
+                        <div class="card-content">
+                            <h3 class="card-title">Enterprise-grade security</h3>
+                            <p class="card-description">We take security as seriously as you do. Affinda is ISO27001 compliant, privacy-first and built for flexible, global deployment.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mobile-card">
+                        <div class="card-content">
+                            <h3 class="card-title">More advanced than machine-learning IDP</h3>
+                            <p class="card-description">Traditional ML needs large datasets and constant upkeep. Affinda learns instantly from a few examples—no retraining, just fast, accurate models.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="progress-indicator">
+                    <div class="progress-bar"></div>
+                </div>
+            </div>
+            
+            <!-- Medium Screen Grid -->
+            <div class="responsive-grid" style="display: none;">
+                <div class="feature-card">
+                    <div class="card-content">
+                        <h3 class="card-title">Achieve 99%+ accuracy</h3>
+                        <p class="card-description">90% isn't enough. Affinda's model memory approach learns from every interaction, reducing mistakes and freeing your team for more valuable work.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="card-content">
+                        <h3 class="card-title">More complete than LLMs alone</h3>
+                        <p class="card-description">LLMs alone hit limits. Affinda wraps an end-to-end platform around LLMs—adding model memory, RAG, OCR and more. Skip the bugs, get results in weeks.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="card-content">
+                        <h3 class="card-title">Move fast and maintain control</h3>
+                        <p class="card-description">Build with Affinda or bring your own workflow. With APIs, sample code and docs, it's easy to get started and scale on your terms.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="card-content">
+                        <h3 class="card-title">Enterprise-grade security</h3>
+                        <p class="card-description">We take security as seriously as you do. Affinda is ISO27001 compliant, privacy-first and built for flexible, global deployment.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="card-content">
+                        <h3 class="card-title">More advanced than machine-learning IDP</h3>
+                        <p class="card-description">Traditional ML needs large datasets and constant upkeep. Affinda learns instantly from a few examples—no retraining, just fast, accurate models.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Desktop Version -->
+        <div class="desktop-layout">
+            <div class="headline-card">
+                <h1 class="headline">Let AI agents do your document processing</h1>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-content">
+                    <h3 class="card-title">Achieve 99%+ accuracy</h3>
+                    <p class="card-description">90% isn't enough. Affinda's model memory approach learns from every interaction, reducing mistakes and freeing your team for more valuable work.</p>
+                </div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-content">
+                    <h3 class="card-title">More complete than LLMs alone</h3>
+                    <p class="card-description">LLMs alone hit limits. Affinda wraps an end-to-end platform around LLMs—adding model memory, RAG, OCR and more. Skip the bugs, get results in weeks.</p>
+                </div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-content">
+                    <h3 class="card-title">Move fast and maintain control</h3>
+                    <p class="card-description">Build with Affinda or bring your own workflow. With APIs, sample code and docs, it's easy to get started and scale on your terms.</p>
+                </div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-content">
+                    <h3 class="card-title">Enterprise-grade security</h3>
+                    <p class="card-description">We take security as seriously as you do. Affinda is ISO27001 compliant, privacy-first and built for flexible, global deployment.</p>
+                </div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-content">
+                    <h3 class="card-title">More advanced than machine-learning IDP</h3>
+                    <p class="card-description">Traditional ML needs large datasets and constant upkeep. Affinda learns instantly from a few examples—no retraining, just fast, accurate models.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Show appropriate layout based on screen size
+        function updateLayout() {
+            const mobileScroll = document.querySelector('.mobile-scroll');
+            const responsiveGrid = document.querySelector('.responsive-grid');
+            
+            if (window.innerWidth <= 639) {
+                mobileScroll.style.display = 'block';
+                responsiveGrid.style.display = 'none';
+            } else if (window.innerWidth <= 1138) {
+                mobileScroll.style.display = 'none';
+                responsiveGrid.style.display = 'grid';
+            } else {
+                mobileScroll.style.display = 'none';
+                responsiveGrid.style.display = 'none';
+            }
+        }
+        
+        updateLayout();
+        window.addEventListener('resize', updateLayout);
+    </script>
+</body>
+</html>
