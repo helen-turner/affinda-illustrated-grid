@@ -6,7 +6,7 @@ const nextConfig = {
     unoptimized: true,
   },
   basePath: '/affinda-illustrated-grid',
-  assetPrefix: '/affinda-illustrated-grid/',
+  assetPrefix: '/affinda-illustrated-grid',
 }
 
 module.exports = nextConfig
